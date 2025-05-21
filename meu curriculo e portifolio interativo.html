@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariel Sharon - RPG Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+            overflow-x: hidden;
+        }
+        .pixel-border {
+            border: 4px solid #4a4a4a;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3);
+        }
+        .menu-option {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .menu-option:hover {
+            background-color: #3a3a5e;
+            transform: translateX(8px);
+        }
+        .menu-option.selected {
+            background-color: #4a4a7a;
+            color: #f8d64e;
+            text-shadow: 0 0 5px #f8d64e;
+        }
+        .health-bar {
+            height: 20px;
+            background-color: #333;
+            border-radius: 0;
+        }
+        .health-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.5s;
+        }
+        .mana-bar {
+            height: 20px;
+            background-color: #333;
+            border-radius: 0;
+        }
+        .mana-fill {
+            height: 100%;
+            background-color: #2196F3;
+            transition: width 0.5s;
+        }
+        .xp-bar {
+            height: 10px;
+            background-color: #333;
+            border-radius: 0;
+        }
+        .xp-fill {
+            height: 100%;
+            background-color: #FF9800;
+            transition: width 0.5s;
+        }
+        .dialog-box {
+            border: 4px solid #4a4a4a;
+            background-color: #1e1e3a;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3);
+        }
+        .blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pixel-art {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-4xl pixel-border bg-gray-900 p-6 relative">
+        <!-- Character Header -->
+        <div class="flex flex-col md:flex-row gap-6 mb-8">
+            <div class="flex-shrink-0">
+                <div class="w-32 h-32 bg-gray-800 pixel-border flex items-center justify-center">
+                    <img src="C:\Users\Ariel's\Pictures\20221104_070140.jpg" alt="Pixel Art Avatar" class="w-24 h-24 pixel-art">
+                </div>
+            </div>
+            <div class="flex-grow">
+                <h1 class="text-2xl md:text-3xl text-yellow-300 mb-2">ARIEL SHARON</h1>
+                <p class="text-green-400 mb-4">Lv. 25 Técnico em Informática</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div>
+                        <p class="text-sm text-gray-400">HP</p>
+                        <div class="health-bar">
+                            <div class="health-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-400">MP</p>
+                        <div class="mana-bar">
+                            <div class="mana-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-400">XP</p>
+                        <div class="xp-bar">
+                            <div class="xp-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 bg-blue-900">HTML/CSS</span>
+                    <span class="text-xs px-2 py-1 bg-blue-900">JavaScript</span>
+                    <span class="text-xs px-2 py-1 bg-blue-900">Manutenção</span>
+                    <span class="text-xs px-2 py-1 bg-blue-900">Vendas</span>
+                    <span class="text-xs px-2 py-1 bg-blue-900">Full-Stack</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Left Menu -->
+            <div class="md:col-span-1 bg-gray-800 pixel-border p-4">
+                <h2 class="text-lg text-yellow-300 mb-4 border-b border-gray-700 pb-2">MENU</h2>
+                <ul class="space-y-2">
+                    <li class="menu-option selected px-2 py-1" data-section="about">> SOBRE MIM</li>
+                    <li class="menu-option px-2 py-1" data-section="skills">> HABILIDADES</li>
+                    <li class="menu-option px-2 py-1" data-section="experience">> EXPERIÊNCIA</li>
+                    <li class="menu-option px-2 py-1" data-section="education">> FORMAÇÃO</li>
+                    <li class="menu-option px-2 py-1" data-section="contact">> CONTATO</li>
+                </ul>
+                
+                <div class="mt-8">
+                    <h2 class="text-lg text-yellow-300 mb-2 border-b border-gray-700 pb-2">STATUS</h2>
+                    <div class="text-xs space-y-1">
+                        <p>FOR: 12 <span class="text-gray-500">// Proatividade</span></p>
+                        <p>INT: 15 <span class="text-gray-500">// Conhecimento</span></p>
+                        <p>AGI: 14 <span class="text-gray-500">// Adaptabilidade</span></p>
+                        <p>CHA: 13 <span class="text-gray-500">// Comunicação</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Content -->
+            <div class="md:col-span-3">
+                <!-- About Section -->
+                <div id="about" class="dialog-box p-4 section-content">
+                    <h2 class="text-xl text-yellow-300 mb-4">SOBRE O PERSONAGEM</h2>
+                    <p class="mb-4">Técnico em informática buscando oportunidades para aplicar minhas habilidades e conhecimentos de forma eficiente e colaborativa.</p>
+                    <p class="mb-4">Com foco em resultados e proatividade, estou sempre em busca de novos desafios e aprendizados para contribuir de maneira significativa para o crescimento da empresa.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <h3 class="text-green-400 mb-2">MISSÃO</h3>
+                            <p class="text-sm">Aplicar meus conhecimentos técnicos para resolver problemas e criar soluções inovadoras.</p>
+                        </div>
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <h3 class="text-green-400 mb-2">VISÃO</h3>
+                            <p class="text-sm">Tornar-me um desenvolvedor Full-Stack completo e contribuir para projetos significativos.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Section (hidden by default) -->
+                <div id="skills" class="dialog-box p-4 section-content hidden">
+                    <h2 class="text-xl text-yellow-300 mb-4">HABILIDADES & EQUIPAMENTOS</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="text-green-400 mb-2 border-b border-gray-700 pb-1">HABILIDADES TÉCNICAS</h3>
+                            <ul class="text-sm space-y-2">
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-red-500 mr-2"></span>
+                                    Manutenção de computadores
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-red-500 mr-2"></span>
+                                    Instalação de software
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-red-500 mr-2"></span>
+                                    Desenvolvimento Web
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-red-500 mr-2"></span>
+                                    Eletricista predial
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-green-400 mb-2 border-b border-gray-700 pb-1">HABILIDADES SOCIAIS</h3>
+                            <ul class="text-sm space-y-2">
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-blue-500 mr-2"></span>
+                                    Atendimento ao cliente
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-blue-500 mr-2"></span>
+                                    Trabalho em equipe
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-blue-500 mr-2"></span>
+                                    Vendas e negociação
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-3 h-3 bg-blue-500 mr-2"></span>
+                                    Gestão de estoque
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h3 class="text-green-400 mb-2 border-b border-gray-700 pb-1">CURSOS ADICIONAIS</h3>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-center">
+                                <span class="inline-block w-3 h-3 bg-yellow-500 mr-2"></span>
+                                2024 • Eletricista Instalador Predial de Baixa Tensão (Senai)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="inline-block w-3 h-3 bg-yellow-500 mr-2 blink"></span>
+                                Desenvolvedor Full-Stack (Codecademy) - EM ANDAMENTO
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Section (hidden by default) -->
+                <div id="experience" class="dialog-box p-4 section-content hidden">
+                    <h2 class="text-xl text-yellow-300 mb-4">HISTÓRICO DE MISSÕES</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-green-400">Casa do Cartucho - Serrolândia</h3>
+                                <span class="text-xs bg-gray-700 px-2 py-1">2023</span>
+                            </div>
+                            <p class="text-sm mt-2">Funções: Manutenção preventiva e corretiva; Formatação, instalação de software; Manutenção de hardware e software; Atendimento ao cliente.</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-green-400">Master Magazine</h3>
+                                <span class="text-xs bg-gray-700 px-2 py-1">2023</span>
+                            </div>
+                            <p class="text-sm mt-2">Funções: Vendedor.</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-green-400">VJ Móveis</h3>
+                                <span class="text-xs bg-gray-700 px-2 py-1">2023</span>
+                            </div>
+                            <p class="text-sm mt-2">Funções: Auxiliar administrativo; Assistência técnica; Marketing e mídia digital.</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-green-400">Carvalho Materiais de Construção</h3>
+                                <span class="text-xs bg-gray-700 px-2 py-1">2024</span>
+                            </div>
+                            <p class="text-sm mt-2">Funções: Vendedor.</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-green-400">Shopp Cell</h3>
+                                <span class="text-xs bg-gray-700 px-2 py-1">2024</span>
+                            </div>
+                            <p class="text-sm mt-2">Funções: Gestão de Estoque; Atendente/Vendedor.</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-green-400">Frigold</h3>
+                                <span class="text-xs bg-gray-700 px-2 py-1">2025</span>
+                            </div>
+                            <p class="text-sm mt-2">Funções: Auxiliar de estoque.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education Section (hidden by default) -->
+                <div id="education" class="dialog-box p-4 section-content hidden">
+                    <h2 class="text-xl text-yellow-300 mb-4">FORMAÇÃO ACADÊMICA</h2>
+                    
+                    <div class="bg-gray-800 p-3 pixel-border">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-green-400">Ensino Médio Completo</h3>
+                            <span class="text-xs bg-gray-700 px-2 py-1">2019-2021</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-3 pixel-border mt-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-green-400">Técnico em Informática</h3>
+                            <span class="text-xs bg-gray-700 px-2 py-1">2019-2021</span>
+                        </div>
+                        <p class="text-sm mt-2">Centro Territorial de Educação Profissional do Piemonte da Diamentina em Jacobina.</p>
+                    </div>
+                </div>
+                
+                <!-- Contact Section (hidden by default) -->
+                <div id="contact" class="dialog-box p-4 section-content hidden">
+                    <h2 class="text-xl text-yellow-300 mb-4">CONTATOS & REDES SOCIAIS</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <h3 class="text-green-400 mb-2">INFORMAÇÕES DE CONTATO</h3>
+                            <ul class="text-sm space-y-2">
+                                <li class="flex items-center">
+                                    <span class="inline-block w-4 h-4 bg-red-500 mr-2"></span>
+                                    WhatsApp: (74) 99935-0604
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-4 h-4 bg-blue-500 mr-2"></span>
+                                    E-mail: ariel00lima016@gmail.com
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="inline-block w-4 h-4 bg-purple-500 mr-2"></span>
+                                    Instagram: @ariel_lima00
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-800 p-3 pixel-border">
+                            <h3 class="text-green-400 mb-2">ENVIAR MENSAGEM</h3>
+                            <form class="space-y-2">
+                                <input type="text" placeholder="Seu nome" class="w-full bg-gray-700 px-2 py-1 text-sm">
+                                <input type="email" placeholder="Seu e-mail" class="w-full bg-gray-700 px-2 py-1 text-sm">
+                                <textarea placeholder="Sua mensagem" class="w-full bg-gray-700 px-2 py-1 text-sm h-20"></textarea>
+                                <button type="submit" class="bg-yellow-600 hover:bg-yellow-700 px-3 py-1 text-sm">ENVIAR</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-6 text-center text-xs text-gray-500">
+            <p>Pressione ENTER para selecionar | ↑ ↓ para navegar | ESC para voltar</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuOptions = document.querySelectorAll('.menu-option');
+            
+            menuOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    menuOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Hide all sections
+                    document.querySelectorAll('.section-content').forEach(section => {
+                        section.classList.add('hidden');
+                    });
+                    
+                    // Show selected section
+                    const sectionId = this.getAttribute('data-section');
+                    document.getElementById(sectionId).classList.remove('hidden');
+                });
+            });
+            
+            // Simulate RPG menu navigation with keyboard
+            document.addEventListener('keydown', function(e) {
+                const currentSelected = document.querySelector('.menu-option.selected');
+                const options = Array.from(document.querySelectorAll('.menu-option'));
+                const currentIndex = options.indexOf(currentSelected);
+                
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const nextIndex = (currentIndex + 1) % options.length;
+                    options[nextIndex].click();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prevIndex = (currentIndex - 1 + options.length) % options.length;
+                    options[prevIndex].click();
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    currentSelected.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
